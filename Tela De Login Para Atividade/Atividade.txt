@@ -1,0 +1,63 @@
+Atividade:
+ 
+Entregar no máximo até dia 05/05/2025 até as 10:35, mandar o link do GitHub no meu chat particular no teams.
+ 
+CUIDADO COM OS COPIA E COLA E NÃO VOU ACEITAR CODIGOS IGUAIS ENTRE OS ALUNOS.
+ 
+Critérios da Atividade — Vamos por partes!
+ 
+1. Mensagens e Mudança de Tela
+
+O sistema deve mostrar mensagens de sucesso quando algo der certo (tipo: login feito, senha trocada).
+
+Se algo der errado (tipo: email errado, senhas diferentes), precisa mostrar mensagens de erro também.
+
+Depois da mensagem, o sistema deve levar o usuário pra outra tela usando header().
+ 
+2. Login
+
+Verifica se o e-mail está cadastrado no banco.
+
+Se estiver, confere se a senha está certa.
+
+Se tudo estiver certo, faz o login e leva pra próxima página.
+
+Se tiver algo errado, mostra a mensagem dizendo o que foi.
+ 
+3. Recuperar Senha – Parte 1: Enviando o Código
+
+Primeiro, verifica se o email digitado existe.
+
+Se existir, cria um código aleatório.
+
+Salva esse código no banco (na tabela code).
+
+Mostra uma mensagem dizendo que o código foi enviado.
+ 
+4. Verificar Código
+
+O aluno digita o código que recebeu.
+
+O sistema precisa checar se esse código existe no banco.
+
+Se estiver certo, leva pra tela de trocar a senha.
+ 
+5. Recuperar Senha – Parte 2: Nova Senha
+
+Aqui, o aluno digita a nova senha duas vezes.
+
+O sistema precisa ver se as duas são iguais.
+
+Se estiverem iguais, troca a senha no banco.
+
+Mostra uma mensagem dizendo se deu tudo certo ou se teve erro.
+ 
+ 
+Dicas pra auxiliar!
+
+Use $_SESSION pra guardar mensagens (tipo: “senha alterada com sucesso”) e mostrar depois com header().
+
+Se quiser deixar mais seguro, pode usar password_hash() e password_verify() nas senhas (vale ponto extra!).
+
+Vá testando aos poucos. Faz uma parte, testa, depois vai pra próxima.
+ 
