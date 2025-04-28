@@ -126,6 +126,19 @@
         .divider::after {
             right: 0;
         }
+
+                /* Animação para mover a tela para a esquerda */
+                .slide-left {
+            animation: slideLeft 0.5s forwards;
+        }
+
+        @keyframes slideLeft {
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        
     </style>
 </head>
 
@@ -138,8 +151,14 @@
         <form action="../controller/CadastroController.php" method="POST">
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" name="fullname" id="email" name="email" placeholder="Digite seu e-mail" required>
+                <input type="email" name="email" id="email" name="email" placeholder="Digite seu e-mail" required>
             </div>
+
+            <div class="form-group">
+    <label for="telefone">Telefone</label>
+    <input type="tel" name="Telefone" id="Telefone" placeholder="(XX) XXXXX-XXXX" required>
+</div>
+
 
             <div class="form-group">
                 <label for="Nome">Nome</label>
@@ -147,18 +166,13 @@
             </div>
 
             <div class="form-group">
-                <label for="Sobrenome">Sobrenome</label>
-                <input type="Sobrenome" name="fullname" id="Sobrenome" name="Sobrenome" placeholder="Digite seu Sobrenome" required>
-            </div>
-
-            <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" name="fullname" id="password" name="password" placeholder="Digite sua senha" required>
+                <input type="password" name="password" id="password" name="password" placeholder="Digite sua senha" required>
             </div>
 
             <div class="form-group">
                 <label for="confirm-password">Confirmar Senha</label>
-                <input type="password" name="fullname" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha" required>
+                <input type="password" name="confirmPassword" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha" required>
             </div>
 
             <button type="submit" class="register-button">Cadastrar</button>
@@ -170,6 +184,27 @@
             <p>Já tem uma conta? <a href="index.php">Faça login</a></p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    // Se for link interno (não âncora vazia e não javascript)
+                    if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                        e.preventDefault(); // Impede a navegação imediata
+                        document.body.classList.add('slide-left'); // Aplica a animação de deslizar para a esquerda
+
+                        setTimeout(() => {
+                            window.location.href = href; // Redireciona após a animação
+                        }, 500); // Tempo de duração da animação (500ms)
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

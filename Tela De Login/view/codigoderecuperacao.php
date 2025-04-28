@@ -124,6 +124,18 @@
         .divider::after {
             right: 0;
         }
+
+                /* Animação para mover a tela para a esquerda */
+                .slide-left {
+            animation: slideLeft 0.5s forwards;
+        }
+
+        @keyframes slideLeft {
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -147,5 +159,32 @@
             <p>Já lembra da sua senha? <a href="index.php">Faça login</a></p>
         </div>
     </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    // Se for link interno (não âncora vazia e não javascript)
+                    if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                        e.preventDefault(); // Impede a navegação imediata
+                        document.body.classList.add('slide-left'); // Aplica a animação de deslizar para a esquerda
+
+                        setTimeout(() => {
+                            window.location.href = href; // Redireciona após a animação
+                        }, 500); // Tempo de duração da animação (500ms)
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
+
+
+
+
 </html>
